@@ -1,4 +1,4 @@
-# BMEVITMMA19_homework
+# Image classification "in-the-wild"
 
 This repo is a homework for Deep Learning course (BMEVITMMA19) at BME university.
 
