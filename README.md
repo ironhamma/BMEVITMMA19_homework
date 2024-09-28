@@ -54,16 +54,16 @@ At this point if you done everything correctly, the block in your Jupyter notebo
 
 ## Objectives of the homework
 ### Phase 1
-• Containerization 🟥
-• Data acquisition and analysis 🟥
-• Data cleansing and preparation 🟥
+- Containerization 🟥
+- Data acquisition and analysis 🟥
+- Data cleansing and preparation 🟥
 ### Phase 2
-• Defining evaluation criteria 🟥
-• Baseline (reference) model 🟥
-• Incremental model development 🟥
+- Defining evaluation criteria 🟥
+- Baseline (reference) model 🟥
+- Incremental model development 🟥
 ### Phase 3
-• Advanced evaluation 🟥
-• ML as a service (prototype) 🟥
+- Advanced evaluation 🟥
+- ML as a service (prototype) 🟥
 
 ## Code owners
 - dr.Konyecsny Szonja Anilla (DT9XRT)
