@@ -92,12 +92,12 @@ At this point if you done everything correctly, the block in your Jupyter notebo
 ## Objectives of the homework
 ### Phase 1
 - Containerization 🟩
-- - Dockerfile added, which can be used to run the notebook currently and in the future be able to run the homework
+  - Dockerfile added, which can be used to run the notebook currently and in the future be able to run the homework
 - Data acquisition and analysis 🟩
-- - Data is acquired from the internet and added to the repository
-- - Data analysis is performed on the dataset
+  - Data is acquired from the internet and added to the repository
+  - Data analysis is performed on the dataset
 - Data cleansing and preparation 🟩
-- - Both train and test data is being cleaned and train data is preprocessed as well
+  - Both train and test data is being cleaned and train data is preprocessed as well
 ### Phase 2
 - Defining evaluation criteria 🟥
 - Baseline (reference) model 🟥
