@@ -51,8 +51,7 @@ Run ```docker build -t melytanulas_hazi .``` command in the root of this directo
 This will build the Docker image
 
 ### Run docker image
-Run ```docker run -p 8888:8888 -d -it --name melytanulas -v $(pwd):/app melytanulas_hazi``` command in the root of this directory.
-This will run the Docker image, mount this directory to it (so your changes will be present in the container as well) and expose the container's ```8888``` port, so we can use it as a jupyter notebook server.
+Run ```docker run -d -it --name melytanulas``` command in the root of this directory.
 
 
 ## Setting up locally for development
