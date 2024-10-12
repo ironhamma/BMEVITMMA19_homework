@@ -105,7 +105,3 @@ At this point if you done everything correctly, the block in your Jupyter notebo
 ### Phase 3
 - Advanced evaluation 🟥
 - ML as a service (prototype) 🟥
-
-## Code owners
-- dr.Konyecsny Szonja Anilla (DT9XRT)
-- Szabó Benedek Zoltán (AG11M9)
