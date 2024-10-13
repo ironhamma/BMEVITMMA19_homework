@@ -42,7 +42,11 @@ We have collected 50 image of all three categories and uploaded them into this r
 
 ## Related works
 
-None
+### Related GitHub repository:
+``` https://lightning.ai/docs/pytorch/stable/notebooks/lightning_examples/cifar10-baseline.html ```
+
+### Related paper:
+``` https://arxiv.org/abs/1512.03385 ```
 
 ## Run and build container locally
 
