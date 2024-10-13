@@ -2,7 +2,18 @@
 
 This repo is a homework for Deep Learning course (BMEVITMMA19) at BME university.
 
-## Original task description
+## Team
+
+Team Name: Mirage
+
+Team Members:
+| Name    | Neptun |
+| -------- | ------- |
+| dr.Konyecsny Szonja Anilla  | DT9XRT    |
+| Szabó Benedek Zoltán    | AG11M9    |
+
+
+## Project description
 ```
 The goal of this project is to gather you own real-world image dataset with different types of objects in it and train an image classifier for solving it.
 Dataset examples: books vs shoes vs furniture, houseplants vs outdoor plants vs trees.
@@ -16,9 +27,34 @@ Build an image classification pipeline for your dataset and train multiple netwo
 
 ## Our chosen topic
 
-This one is TODO when we have decided on the type of images we want to classify
+We have decided to classify food. The three classes chosen are: Bagel, Buger and Sandwich.
+We have collected 50 image of all three categories and uploaded them into this repository.
 
-## Setting up locally
+## Files in this repository
+- ```images``` folder: This directory contains the images that our solution will use.
+- ```images\test``` folder: This directory contains the test images. The directory has bagel, burger and sandwich subdirectories which contain the actual images
+- ```images\train``` folder: This directory contains the train images. The directory has bagel, burger and sandwich subdirectories which contain the actual images
+- ```images\val``` folder: This directory contains the validation images. The directory has bagel, burger and sandwich subdirectories which contain the actual images
+- ```test_output``` folder: This directory contains the expected classifications for the test input images.
+- Dockerfile: Dockerfile for the docker container where the homework can run
+- homework.ipynb: The notebook that contains the solution
+- requirements.txt: A text file that contains the python dependencies for the previously mentioned notebook
+
+## Related works
+
+None
+
+## Run and build container locally
+
+### Build docker image
+Run ```docker build -t melytanulas_hazi .``` command in the root of this directory.
+This will build the Docker image
+
+### Run docker image
+Run ```docker run -d -it --name melytanulas``` command in the root of this directory.
+
+
+## Setting up locally for development
 
 ### Build docker image
 Run ```docker build -t melytanulas_hazi .``` command in the root of this directory.
@@ -54,9 +90,13 @@ At this point if you done everything correctly, the block in your Jupyter notebo
 
 ## Objectives of the homework
 ### Phase 1
-- Containerization 🟥
-- Data acquisition and analysis 🟥
-- Data cleansing and preparation 🟥
+- Containerization 🟩
+  - Dockerfile added, which can be used to run the notebook currently and in the future be able to run the homework
+- Data acquisition and analysis 🟩
+  - Data is acquired from the internet and added to the repository
+  - Data analysis is performed on the dataset
+- Data cleansing and preparation 🟩
+  - Both train and test data is being cleaned and train data is preprocessed as well
 ### Phase 2
 - Defining evaluation criteria 🟥
 - Baseline (reference) model 🟥
@@ -64,7 +104,3 @@ At this point if you done everything correctly, the block in your Jupyter notebo
 ### Phase 3
 - Advanced evaluation 🟥
 - ML as a service (prototype) 🟥
-
-## Code owners
-- dr.Konyecsny Szonja Anilla (DT9XRT)
-- Szabó Benedek Zoltán (AG11M9)

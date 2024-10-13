@@ -1,7 +1,7 @@
 jupyter
 numpy
 pandas
-opencv-python
 matplotlib
-scikit-learn
-tensorflow
+torch>=2.0.0
+torchvision>=0.15.0
+pytorch-lightning>=2.0.0
