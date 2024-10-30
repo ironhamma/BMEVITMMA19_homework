@@ -103,8 +103,8 @@ At this point if you done everything correctly, the block in your Jupyter notebo
   - Both train and test data is being cleaned and train data is preprocessed as well
 ### Phase 2
 - Defining evaluation criteria 🟥
-- Baseline (reference) model 🟥
-- Incremental model development 🟥
+- Baseline (reference) model 🟩
+- Incremental model development 🟩
 ### Phase 3
 - Advanced evaluation 🟥
 - ML as a service (prototype) 🟥
