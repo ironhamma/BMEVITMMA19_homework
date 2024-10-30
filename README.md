@@ -55,7 +55,7 @@ Run ```docker build -t melytanulas_hazi .``` command in the root of this directo
 This will build the Docker image
 
 ### Run docker image
-Run ```docker run -d -it --name melytanulas``` command in the root of this directory.
+Run ```docker run -d -it --name melytanulas melytanulas_hazi``` command in the root of this directory.
 
 
 ## Setting up locally for development
