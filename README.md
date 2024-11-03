@@ -66,16 +66,16 @@ Run ```docker run -d -it --name melytanulas melytanulas_hazi``` command in the r
 
 
 Basic steps of the pipeline:
-1: Load the images and analyze them
-2: Define a custom DataModule for the task
-3: Define an evaluating Python function
-4: Define a baseline model, train and evaluate it (BaseLineModel)
-5: Define a refined more complex model, train and evaluate it (ComplexModel)
-6: Define a Transfer learning model based on Resnet18, train and evaluate it (TransferLearningModel)
-7: Define an Ensemble model that ensembles the previous models, train and evaluate it (EnsembleModel)
-8: Track the metrics of EnsembleModel in Wandb
-9: Load up the best model from Wandb
-10: Run test prediction on images from all three classes
+1. Load the images and analyze them
+2. Define a custom DataModule for the task
+3. Define an evaluating Python function
+4. Define a baseline model, train and evaluate it (BaseLineModel)
+5. Define a refined more complex model, train and evaluate it (ComplexModel)
+6. Define a Transfer learning model based on Resnet18, train and evaluate it (TransferLearningModel)
+7. Define an Ensemble model that ensembles the previous models, train and evaluate it (EnsembleModel)
+8. Track the metrics of EnsembleModel in Wandb
+9. Load up the best model from Wandb
+10. Run test prediction on images from all three classes
 
 ## How to train the models
 - Define the hyperparameters in the code block that has the markdown title "Define hyperparams" above it
