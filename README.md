@@ -57,6 +57,61 @@ This will build the Docker image
 ### Run docker image
 Run ```docker run -d -it --name melytanulas melytanulas_hazi``` command in the root of this directory.
 
+## How to run the pipeline
+- Make sure everything is installed from requirements.txt
+- Make sure you have the images folder set up (with test, train and validation datasets)
+- Modify the hyperparameters in the appropriate code block if you want
+- Run the ```homework.ipynb``` notebook
+- Log into Wandb when the notebook prompts you to
+
+
+Basic steps of the pipeline:
+1. Load the images and analyze them
+2. Define a custom DataModule for the task
+3. Define an evaluating Python function
+4. Define a baseline model, train and evaluate it (BaseLineModel)
+5. Define a refined more complex model, train and evaluate it (ComplexModel)
+6. Define a Transfer learning model based on Resnet18, train and evaluate it (TransferLearningModel)
+7. Define an Ensemble model that ensembles the previous models, train and evaluate it (EnsembleModel)
+8. Track the metrics of EnsembleModel in Wandb
+9. Load up the best model from Wandb
+10. Run test prediction on images from all three classes
+
+## How to train the models
+- Define the hyperparameters in the code block that has the markdown title "Define hyperparams" above it
+
+Baseline:
+
+- Run the code block "Define baseline model" to declare the baseline model
+- Run the training and evaluation code block for the baseline model (located under the previous one)
+
+Complex Model:
+
+- Run the code block "Add complexity" to declare the complex model
+- Run the training and evaluation code block for the complex model (located under the previous one)
+
+Transfer learning model:
+
+- Run the code block "Use transfer learning" to declare the transfer learning model
+- Run the training and evaluation code block for the transfer learning model (located under the previous one)
+
+Ensemble model:
+
+- Run the code block "Ensemble models" to declare the ensemble model
+- Run the code block under the previous one, that creates an instance of the ensemble model
+- Run the block under the previous one, that defines the Wandb logger, checkpoint and early stopping callbacks and the trainer
+- Run the training and evaluation code block for the complex model (located under the previous one)
+- Run the code block under the previous one, to load up the best model from the run
+- Run ```wandb.finish()``` to finish up the Wandb run (located under the previous one)
+
+## How to evaluate the models
+
+A model evaluation function is defined that can be used to evaluate models.
+
+Call the ```evaluate_models``` function with these parameters: ```evaluated_model```, ```test_dataloader```, ```class_names``` and optionally a ```logger```.
+
+An example evaluation call:
+```evaluate_model(best_model, data_module.test_dataloader(), class_names, logger=wandb_logger)```
 
 ## Setting up locally for development
 
@@ -102,7 +157,7 @@ At this point if you done everything correctly, the block in your Jupyter notebo
 - Data cleansing and preparation 🟩
   - Both train and test data is being cleaned and train data is preprocessed as well
 ### Phase 2
-- Defining evaluation criteria 🟥
+- Defining evaluation criteria 🟩
 - Baseline (reference) model 🟩
 - Incremental model development 🟩
 ### Phase 3
