@@ -117,6 +117,11 @@ An example evaluation call:
 
 📌 **Note**: Make sure that the ```8888``` and ```7860``` ports are available on your machine, or just port these to another port on your machine.
 
+First retrieve the checkpoint files for the models from Google Drive:
+```https://drive.google.com/drive/folders/14OsdKF_OAy47146b8y1ewHGWa-fa5qbb?usp=sharing```
+
+Put the files in the ```checks``` folder
+
 Build the deploy Docker image:
 ```docker build -t melytanulas_hazi_deploy -f deploy/Dockerfile .```
 
