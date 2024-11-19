@@ -183,4 +183,4 @@ At this point if you done everything correctly, the block in your Jupyter notebo
 - Incremental model development 🟩
 ### Phase 3
 - Advanced evaluation 🟥
-- ML as a service (prototype) 🟥
+- ML as a service (prototype) 🟩
