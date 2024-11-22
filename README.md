@@ -113,6 +113,27 @@ Call the ```evaluate_models``` function with these parameters: ```evaluated_mode
 An example evaluation call:
 ```evaluate_model(best_model, data_module.test_dataloader(), class_names, logger=wandb_logger)```
 
+## Start the service in Docker
+
+📌 **Note**: Make sure that the ```8888``` and ```7860``` ports are available on your machine, or just port these to another port on your machine.
+
+First retrieve the checkpoint files for the models from Google Drive:
+```https://drive.google.com/drive/folders/14OsdKF_OAy47146b8y1ewHGWa-fa5qbb?usp=sharing```
+
+Put the files in the ```checks``` folder
+
+Build the deploy Docker image:
+```docker build -t melytanulas_hazi_deploy -f deploy/Dockerfile .```
+
+Run the docker image:
+```docker run -p 8888:8888 -p 7860:7860 -d -it --name melytanulas_deploy -v $(pwd):/app melytanulas_hazi_deploy```
+
+Once the server starts, the service will be available at localhost:7860
+
+To run the deploy image in train mode, so the models inside are retrained, set the ```TRAIN_MODELS_INSTEAD_OF_LOAD``` variable at the start of the ```homework.ipynb``` to True.
+
+📌 **Note**: If you train the models during deployment, it will take a long time for the service to start.
+
 ## Setting up locally for development
 
 ### Build docker image
@@ -162,4 +183,4 @@ At this point if you done everything correctly, the block in your Jupyter notebo
 - Incremental model development 🟩
 ### Phase 3
 - Advanced evaluation 🟥
-- ML as a service (prototype) 🟥
+- ML as a service (prototype) 🟩

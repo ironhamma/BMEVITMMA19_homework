@@ -11,7 +11,7 @@ RUN apt-get update && apt-get install -y \
     libxext6
 
 RUN pip install --upgrade pip
-RUN pip install --no-cache-dir -r requirements.txt
+RUN pip install --no-cache-dir -r /app/requirements.txt
 RUN pip install jupyter
 
 EXPOSE 8888
@@ -19,4 +19,4 @@ EXPOSE 7860
 
 ENV GRADIO_SERVER_NAME="0.0.0.0"
 
-CMD ["jupyter", "notebook", "--ip=0.0.0.0", "--no-browser", "--allow-root"]
+CMD ["bash", "-c", "jupyter nbconvert --to notebook --execute homework.ipynb"]
