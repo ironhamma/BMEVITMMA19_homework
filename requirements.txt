@@ -10,3 +10,4 @@ pillow
 scikit-learn
 seaborn
 gradio
+captum
