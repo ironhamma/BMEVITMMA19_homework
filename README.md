@@ -57,28 +57,34 @@ This will build the Docker image
 ### Run docker image
 Run ```docker run -d -it --name melytanulas melytanulas_hazi``` command in the root of this directory.
 
+### Run docker image with GPU support
+If you have a compatible GPU and CUDA installed, the pipeline will automatically detect and utilize the GPU for faster training and evaluation.
+To run the Docker container with GPU access: ```docker run --gpus all -it --name melytanulas melytanulas_hazi```
+
 ## How to run the pipeline
-- Make sure everything is installed from requirements.txt
-- Make sure you have the images folder set up (with test, train and validation datasets)
+- Make sure everything is installed from requirements.txt (```pip install -r requirements.txt```)
+- Ensure you have the images folder set up (with test, train and validation datasets)
 - Modify the hyperparameters in the appropriate code block if you want
-- Run the ```homework.ipynb``` notebook
-- Log into Wandb when the notebook prompts you to
+- Open and run the ```homework.ipynb``` notebook step-by-step
+- Log into Weights & Biases (Wandb) when prompted if ```DEPLOYMENT=False```
+- For deployment, Wandb logging and sweeps are disabled and predefined static hyperparameters are used instead
 
 
 Basic steps of the pipeline:
-1. Load the images and analyze them
-2. Define a custom DataModule for the task
-3. Define an evaluating Python function
+1. Load and preprocess the images for analysis
+2. Define a custom DataModule for loading data
+3. Implement an advanced evaluation function for detailed performance analysis, including metrics, visualizations, and logging
 4. Define a baseline model, train and evaluate it (BaseLineModel)
-5. Define a refined more complex model, train and evaluate it (ComplexModel)
+5. Define a refined more complex model with additional layers and regularization, train and evaluate it (ComplexModel)
 6. Define a Transfer learning model based on Resnet18, train and evaluate it (TransferLearningModel)
 7. Define an Ensemble model that ensembles the previous models, train and evaluate it (EnsembleModel)
-8. Track the metrics of EnsembleModel in Wandb
-9. Load up the best model from Wandb
-10. Run test prediction on images from all three classes
+8. Use Wandb or custom plots to track and compare model performance metrics
+9. Save and load the best model from Wandb for final testing and predictions
+10. Run test predictions on images from all three classes (burger, bagel, sandwich)
 
 ## How to train the models
-- Define the hyperparameters in the code block that has the markdown title "Define hyperparams" above it
+- Hyperparameters such as learning_rate, weight_decay, dropout_rate, and batch_size are specified in the sweep configurations (baseline_sweep_config, complex_sweep_config, transfer_sweep_config)
+- When DEPLOYMENT is set to True, static hyperparameters are defined directly in the training_function
 
 Baseline:
 
@@ -106,12 +112,15 @@ Ensemble model:
 
 ## How to evaluate the models
 
-A model evaluation function is defined that can be used to evaluate models.
+Model evaluation is handled by the evaluate_model function, which calculates key metrics (accuracy, precision, recall, F1 score) and generates visualizations such as a classification report and confusion matrix. Optional logging to Wandb is supported when DEPLOYMENT is set to False
 
-Call the ```evaluate_models``` function with these parameters: ```evaluated_model```, ```test_dataloader```, ```class_names``` and optionally a ```logger```.
+Steps to evaluate a model:
 
-An example evaluation call:
-```evaluate_model(best_model, data_module.test_dataloader(), class_names, logger=wandb_logger)```
+- Prepare parameters (trained model, dataloader, list of class names, optional logger)
+- Run the evaluation (call the evaluate_model function)
+- Inspect the output (key metrics, confusion matrix heatmap, classification report)
+
+Wandb logging is disabled automatically in deployment mode by setting DEPLOYMENT=True, and all visualizations are saved locally for review
 
 ## Start the service in Docker
 
@@ -182,5 +191,5 @@ At this point if you done everything correctly, the block in your Jupyter notebo
 - Baseline (reference) model 🟩
 - Incremental model development 🟩
 ### Phase 3
-- Advanced evaluation 🟥
+- Advanced evaluation 🟩
 - ML as a service (prototype) 🟩
