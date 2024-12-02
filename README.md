@@ -62,7 +62,7 @@ If you have a compatible GPU and CUDA installed, the pipeline will automatically
 To run the Docker container with GPU access: ```docker run --gpus all -it --name melytanulas melytanulas_hazi```
 
 ## How to run the pipeline
-- Make sure everything is installed from requirements.txt (```pip install -r requirements.txt```)
+- Make sure everything is installed from requirements.txt
 - Ensure you have the images folder set up (with test, train and validation datasets)
 - Modify the hyperparameters in the appropriate code block if you want
 - Open and run the ```homework.ipynb``` notebook step-by-step
