@@ -134,6 +134,8 @@ First retrieve the checkpoint files for the models from Google Drive:
 
 Put the files in the ```checks``` folder
 
+Make sure that ```Deployment``` env variable is set to ```True``` in the notebook and ```TRAIN_MODELS_INSTEAD_OF_LOAD``` is set to ```False``` (if you want to use the prepared checkpoints)
+
 Build the deploy Docker image:
 ```docker build -t melytanulas_hazi_deploy -f deploy/Dockerfile .```
 
