@@ -28,7 +28,7 @@ Build an image classification pipeline for your dataset and train multiple netwo
 ## Our chosen topic
 
 We have decided to classify food. The three classes chosen are: Bagel, Buger and Sandwich.
-We have collected 50 image of all three categories and uploaded them into this repository.
+We have collected 80 image of all three categories and uploaded them into this repository.
 
 ## Files in this repository
 - ```images``` folder: This directory contains the images that our solution will use.
@@ -36,6 +36,8 @@ We have collected 50 image of all three categories and uploaded them into this r
 - ```images\train``` folder: This directory contains the train images. The directory has bagel, burger and sandwich subdirectories which contain the actual images
 - ```images\val``` folder: This directory contains the validation images. The directory has bagel, burger and sandwich subdirectories which contain the actual images
 - ```test_output``` folder: This directory contains the expected classifications for the test input images.
+- ```checks``` folder: This folder contains the checkpoints of our models
+- ```deploy``` folder: This folder contains the Dockerfile that can be used for deployment of the prediction service
 - Dockerfile: Dockerfile for the docker container where the homework can run
 - homework.ipynb: The notebook that contains the solution
 - requirements.txt: A text file that contains the python dependencies for the previously mentioned notebook
@@ -55,11 +57,11 @@ Run ```docker build -t melytanulas_hazi .``` command in the root of this directo
 This will build the Docker image
 
 ### Run docker image
-Run ```docker run -d -it --name melytanulas melytanulas_hazi``` command in the root of this directory.
+Run ```docker run -p 7860:7860 -p 8888:8888 -d -it --name melytanulas melytanulas_hazi``` command in the root of this directory.
 
 ### Run docker image with GPU support
 If you have a compatible GPU and CUDA installed, the pipeline will automatically detect and utilize the GPU for faster training and evaluation.
-To run the Docker container with GPU access: ```docker run --gpus all -it --name melytanulas melytanulas_hazi```
+To run the Docker container with GPU access: ```docker run -p 7860:7860 -p 8888:8888 --gpus all -it --name melytanulas melytanulas_hazi```
 
 ## How to run the pipeline
 - Make sure everything is installed from requirements.txt
@@ -81,6 +83,7 @@ Basic steps of the pipeline:
 8. Use Wandb or custom plots to track and compare model performance metrics
 9. Save and load the best model from Wandb for final testing and predictions
 10. Run test predictions on images from all three classes (burger, bagel, sandwich)
+11. Deploy the best model to a web service with gradio
 
 ## How to train the models
 - Hyperparameters such as learning_rate, weight_decay, dropout_rate, and batch_size are specified in the sweep configurations (baseline_sweep_config, complex_sweep_config, transfer_sweep_config)
@@ -131,6 +134,8 @@ First retrieve the checkpoint files for the models from Google Drive:
 
 Put the files in the ```checks``` folder
 
+Make sure that ```Deployment``` env variable is set to ```True``` in the notebook and ```TRAIN_MODELS_INSTEAD_OF_LOAD``` is set to ```False``` (if you want to use the prepared checkpoints)
+
 Build the deploy Docker image:
 ```docker build -t melytanulas_hazi_deploy -f deploy/Dockerfile .```
 
@@ -150,8 +155,8 @@ Run ```docker build -t melytanulas_hazi .``` command in the root of this directo
 This will build the Docker image
 
 ### Run docker image
-Run ```docker run -p 8888:8888 -d -it --name melytanulas -v $(pwd):/app melytanulas_hazi``` command in the root of this directory.
-This will run the Docker image, mount this directory to it (so your changes will be present in the container as well) and expose the container's ```8888``` port, so we can use it as a jupyter notebook server.
+Run ```docker run -p 8888:8888 -p 7860:7860 --gpus all -d -it --name melytanulas -v $(pwd):/app melytanulas_hazi``` command in the root of this directory.
+This will run the Docker image, mount this directory to it (so your changes will be present in the container as well) and expose the container's ```8888``` port, so we can use it as a jupyter notebook server. The ```7860``` port is exposed for the web service of the UI.
 
 ### Get the Jupyter server URL
 If you open up the console of your running docker container, you should see in the logs something like this:
